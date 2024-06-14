@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 import Home from "./Components/Home/Home";
 import { Route, Routes } from "react-router-dom";
-import AddUser from "./Components/Add User/AddUser";
 import Users from "./Components/User Details/Users";
+import AddUser from "./Components/AddUser/AddUser";
 
 function App() {
   return (

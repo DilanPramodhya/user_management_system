@@ -5,7 +5,7 @@ function AddUser() {
   return (
     <div>
       <Nav />
-      <h1>AddUser</h1>
+      <h1>Add Users</h1>
     </div>
   );
 }
