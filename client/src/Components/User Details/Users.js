@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Nav from "../Nav/Nav";
 import axios from "axios";
 import User from "../User/User";
+import { useReactToPrint } from "react-to-print";
 
 const URL = "http://localhost:5000/users";
 
@@ -15,12 +16,19 @@ function Users() {
   useEffect(() => {
     fetchHandler().then((data) => setUsers(data.users));
   }, []);
+
+  const ComponentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => ComponentRef.current,
+    DocumentTitle: "Users Report",
+    onafterprint: () => alert("Users Report has Successfully Downloaded !"),
+  });
+
   return (
     <div>
       <Nav />
       <h1>User Details Display Page</h1>
-      <br />
-      <div>
+      <div ref={ComponentRef}>
         {users &&
           users.map((user, i) => (
             <div key={i}>
@@ -28,6 +36,7 @@ function Users() {
             </div>
           ))}
       </div>
+      <button onClick={handlePrint}>Download Report</button>
     </div>
   );
 }

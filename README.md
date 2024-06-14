@@ -9,3 +9,4 @@ npm i cors
 
 npm i react-router-dom
 npm i axios
+npm i react-to-print

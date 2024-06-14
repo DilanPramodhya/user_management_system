@@ -28,7 +28,6 @@ function User(props) {
       </Link>
       <button onClick={deleteHandler}>Delete</button>
       <br />
-      <br />
     </div>
   );
 }
