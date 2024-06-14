@@ -12,13 +12,13 @@ function Nav() {
           </Link>
         </li>
         <li className="home-ll">
-          <Link to="/add-user" className="active home-a">
-            <h1>Add User</h1>
+          <Link to="/user-details" className="active home-a">
+            <h1>User Details</h1>
           </Link>
         </li>
         <li className="home-ll">
-          <Link to="/user-details" className="active home-a">
-            <h1>User Details</h1>
+          <Link to="/add-user" className="active home-a">
+            <h1>Add User</h1>
           </Link>
         </li>
       </ul>
