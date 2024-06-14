@@ -1,0 +1,27 @@
+.home-ul {
+  overflow: hidden;
+  background-color: #333;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.home-ll {
+  float: left;
+}
+
+.home-ll,
+.home-a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 1px 16px;
+  text-decoration: none;
+  font-size: 8px;
+  border-right: 4px solid #bbb;
+}
+
+.home-ll:hover {
+  background-color: #0407aa;
+}
