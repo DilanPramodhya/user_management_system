@@ -5,6 +5,7 @@ const app = express();
 const router = require("./Routes/UserRoutes");
 
 // Middleware configuration
+app.use(express.json());
 app.use("/users", router);
 
 mongoose
