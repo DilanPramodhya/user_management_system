@@ -1,6 +1,6 @@
 const User = require("../Model/UserModel");
 
-// Display data
+// Read Users
 const getAllUsers = async (req, res, next) => {
   let users;
 
@@ -17,10 +17,10 @@ const getAllUsers = async (req, res, next) => {
   }
 
   //   Display all users
-  return res.status(200).json({ users });
+  return res.status(200).json({ message: "Get all user Details", users });
 };
 
-// Data insert
+// Create User
 const addUsers = async (req, res, next) => {
   const { name, gmail, age, address } = req.body;
 
@@ -37,7 +37,7 @@ const addUsers = async (req, res, next) => {
   if (!users) {
     return res.status(404).json({ messages: "Unable to add users" });
   }
-  return res.status(200).json({ users });
+  return res.status(200).json({ message: "User account Created", users });
 };
 
 // Get by Id
@@ -55,7 +55,7 @@ const getById = async (req, res, next) => {
   if (!user) {
     return res.status(404).json({ messages: "User not found" });
   }
-  return res.status(200).json({ user });
+  return res.status(200).json({ message: "Get user by Id", user });
 };
 
 // Update user details
@@ -76,10 +76,29 @@ const updateUser = async (req, res, next) => {
   if (!user) {
     return res.status(404).json({ messages: "Unable to Update user details" });
   }
-  return res.status(200).json({ user });
+  return res.status(200).json({ message: "User details Updated", user });
+};
+
+// Delete user by Id
+const deleteUser = async (req, res, next) => {
+  const id = req.params.id;
+
+  let user;
+
+  try {
+    user = await User.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+  }
+  //   Don't available user
+  if (!user) {
+    return res.status(404).json({ messages: "Unable to delete" });
+  }
+  return res.status(200).json({ message: "User account Deleted", user });
 };
 
 exports.getAllUsers = getAllUsers;
 exports.addUsers = addUsers;
 exports.getById = getById;
 exports.updateUser = updateUser;
+exports.deleteUser = deleteUser;
