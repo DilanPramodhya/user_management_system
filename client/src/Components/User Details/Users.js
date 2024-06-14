@@ -27,6 +27,7 @@ function Users() {
   const [searchQuery, setSearchQuery] = useState("");
   const [noResults, setNoResults] = useState(false);
 
+  // Search function
   const handleSearch = () => {
     fetchHandler().then((data) => {
       const filteredUsers = data.users.filter((user) =>
@@ -37,6 +38,19 @@ function Users() {
       setUsers(filteredUsers);
       setNoResults(filteredUsers.length === 0);
     });
+  };
+
+  // Function for send whatsApp message
+  const handleSendReport = () => {
+    // Create the whatsApp chat URL
+    const phoneNumber = "+94712364352";
+    const message = `selected User Reports`;
+    const WhatsAppUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
+      message
+    )}`;
+
+    // Open the whats app chat in new window
+    window.open(WhatsAppUrl, "_blank");
   };
 
   return (
@@ -66,6 +80,8 @@ function Users() {
         </div>
       )}
       <button onClick={handlePrint}>Download Report</button>
+      <br />
+      <button onClick={handleSendReport}>Send WhatsApp Message</button>
     </div>
   );
 }
